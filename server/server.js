@@ -66,7 +66,10 @@ app.use(helmet());
 
 // 2. Cross-Origin Resource Sharing
 app.use(cors({
-  origin: true, // Allow frontend origin
+  origin: [
+    "http://localhost:5173",
+    "https://foodbridge-steel.vercel.app"
+  ],
   credentials: true,
 }));
 
