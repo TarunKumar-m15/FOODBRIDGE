@@ -95,19 +95,18 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/reports', reportRoutes);
 
 // Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  // Serve static files from React build directory
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+// Health check / Root route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "FoodBridge Backend API is running 🚀",
   });
-} else {
-  // Catch-all for undefined routes in development
-  app.all('*', (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-  });
-}
+});
+
+// Catch-all for undefined routes
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
 
 // Mount Global Error Handling Middleware
 app.use(errorHandler);
