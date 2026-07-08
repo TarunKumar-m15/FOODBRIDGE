@@ -1,0 +1,51 @@
+name: Zero Hunger CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies (root & server)
+        run: |
+          npm install
+          cd server && npm install
+
+      - name: Run ESLint
+        run: |
+          cd server && npx eslint .
+
+      - name: Run Backend Unit Tests
+        run: |
+          cd server && npm run test
+
+  docker-build:
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Server Docker Image
+        run: |
+          docker build -t zerohunger-server:latest ./server
+
+      - name: Build Client Docker Image
+        run: |
+          docker build -t zerohunger-client:latest ./client

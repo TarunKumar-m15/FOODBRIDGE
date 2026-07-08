@@ -1,0 +1,31 @@
+{
+  "name": "foodbridge-zero-hunger",
+  "version": "1.0.0",
+  "description": "Zero Hunger food redistribution platform",
+  "main": "server/server.js",
+  "author": "Zero Hunger Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerohunger/foodbridge.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "install-all": "npm install && npm run install-server && npm run install-client",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "ml-service": "node ml-service/start.js",
+    "seed-admin": "cd server && npm run seed-admin",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run ml-service\"",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm run start"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #020205; /* Pitch black obsidian */
+    color: #f3f4f6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif !important;
+  }
+}
+
+/* --- Neon Cyberpunk Theme Components --- */
+
+/* Neon Text Shadows */
+.text-neon-pink {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 40px #ff007f;
+}
+
+.text-neon-cyan {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+}
+
+.text-neon-green {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #39ff14, 0 0 20px #39ff14;
+}
+
+/* Text Gradients with Neon Highlights */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 40%, #ff007f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #ff007f 0%, #00f0ff 50%, #39ff14 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.2));
+}
+
+/* Neon Cards with Glowing Borders */
+.card-glass {
+  background: rgba(4, 6, 12, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+}
+
+.card-glass-interactive {
+  background: rgba(4, 6, 12, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glass-interactive:hover {
+  background: rgba(8, 12, 24, 0.95);
+  border: 1px solid #ff007f; /* Electric neon pink border on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px 0 rgba(255, 0, 127, 0.25); /* High intensity neon glow */
+}
+
+/* High-Intensity Neon Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #ff007f 0%, #d9006c 100%);
+  color: #ffffff;
+  font-weight: 800;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  border: 1px solid #ff007f;
+  box-shadow: 0 0 20px 0 rgba(255, 0, 127, 0.45); /* Intense neon button shadow */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px 0 rgba(255, 0, 127, 0.7); /* Double intensity neon glow */
+  filter: brightness(1.2);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: rgba(0, 240, 255, 0.03);
+  color: #e2e8f0;
+  font-weight: 800;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 240, 255, 0.25); /* Cyan neon border */
+  box-shadow: 0 0 15px 0 rgba(0, 240, 255, 0.15); /* Soft cyan glow */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 240, 255, 0.1);
+  color: #ffffff;
+  border-color: #00f0ff;
+  box-shadow: 0 0 25px 0 rgba(0, 240, 255, 0.4); /* Intense cyan neon glow */
+  transform: translateY(-2px);
+}
+
+/* Cyberpunk Neon Input Fields */
+.input-field {
+  width: 100%;
+  background: rgba(2, 2, 5, 0.9) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25); /* Neon Cyan border */
+  border-radius: 12px;
+  padding: 0.875rem 1.25rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px 0 rgba(0, 240, 255, 0.05);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ff007f; /* Focus transitions into Neon Pink */
+  box-shadow: 0 0 20px 0 rgba(255, 0, 127, 0.3);
+  background: rgba(2, 2, 5, 0.95) !important;
+}
+
+.input-field::placeholder {
+  color: #3b4252;
+}
+
+/* Neon Glow Shadow helpers */
+.glow-rose {
+  box-shadow: 0 0 20px 0 rgba(255, 0, 127, 0.25);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px 0 rgba(57, 255, 20, 0.25);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px 0 rgba(0, 240, 255, 0.25);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #020205;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.25);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff007f;
+  box-shadow: 0 0 10px #ff007f;
+}
